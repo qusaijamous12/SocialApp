@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "300616734143",
+    "project_id": "socialapp2-ecb1f",
+    "storage_bucket": "socialapp2-ecb1f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300616734143:android:04c84b165f0170945cfd0a",
+        "android_client_info": {
+          "package_name": "com.example.shoppapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe01HNxr81wGnswGbugZoYmH1DfWb0uBY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
