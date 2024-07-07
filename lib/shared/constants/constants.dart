@@ -9,14 +9,18 @@ Widget BuildDefaultTextFormField({
   required TextEditingController controller,
   required TextInputType textInputType,
   var ObsecureText=false,
+  void Function()? onpressSufix,
 })=>TextFormField(
   decoration: InputDecoration(
     labelText: text,
     prefixIcon:Icon(
         prefixIcon
     ),
-    suffixIcon: Icon(
+    suffixIcon: IconButton(
+      onPressed: onpressSufix,
+      icon: Icon(
         sufixIcon
+      ),
     ),
     border: outLineBorder,
 
@@ -97,9 +101,11 @@ pushAndRemoveUntil(
 
 dynamic Navigatepop(context)=>Navigator.pop(context);
 
-PreferredSizeWidget BuildDefaultAppBar({
+PreferredSizeWidget BuildDefaultAppBar(context,{
   required IconData icon,
-  required void Function()? onpress
+  required void Function()? onpress,
+  String ?title,
+  List<Widget> ?widget,
 })=>AppBar(
   leading: IconButton(
     onPressed: onpress,
@@ -109,4 +115,13 @@ PreferredSizeWidget BuildDefaultAppBar({
 
     ),
   ),
+  title: Text(
+    '${title}',
+    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+      fontSize: 18
+    ),
+  ),
+  actions: widget,
 );
+
+dynamic uid;

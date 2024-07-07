@@ -1,7 +1,9 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:shoppapp/socailapp/moduels/addpost/addpost.dart';
 import 'cubit/cubit.dart';
 import 'cubit/state.dart';
 
@@ -41,8 +43,11 @@ class HomeScreen extends StatelessWidget{
             padding: const EdgeInsets.all(10.0),
             child: GNav(
               selectedIndex: cubit.curentIndex,
-              onTabChange: (index){
+              onTabChange: (index,){
                 cubit.ChangeCurentIndex(index);
+                if(cubit.curentIndex==2){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPost()));
+                }
               },
               gap: 8,
               padding: EdgeInsetsDirectional.all(10),
@@ -56,6 +61,9 @@ class HomeScreen extends StatelessWidget{
                   icon:Icons.message,
                   text: 'Chats',),
                 GButton(
+                  icon:Icons.add,
+                  text: 'Add Post',),
+                GButton(
                   icon:Icons.person,
                   text: 'Users',),
                 GButton(
@@ -64,7 +72,11 @@ class HomeScreen extends StatelessWidget{
               ],
             ),
           ),
-          body: cubit.Screens[cubit.curentIndex],
+          body: ConditionalBuilder(
+            condition:cubit.socialmodel!=null,
+            builder:(context)=>cubit.Screens[cubit.curentIndex] ,
+            fallback:(context)=>Center(child: CircularProgressIndicator()) ,
+          ),
         );
       },
 
