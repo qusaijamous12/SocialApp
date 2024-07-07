@@ -283,6 +283,9 @@ List<PostModel> posts=[];
   List<int> likes=[];
 
   void GetPosts(){
+    postId=[];
+    posts=[];
+    likes=[];
     emit(SocailGetPostLoadingsState());
     FirebaseFirestore
         .instance
@@ -322,6 +325,7 @@ List<PostModel> posts=[];
       'like':true
 
     }).then((value) {
+      GetPosts();
       emit(LikePostSuccessState());
 
     }).catchError((Error){

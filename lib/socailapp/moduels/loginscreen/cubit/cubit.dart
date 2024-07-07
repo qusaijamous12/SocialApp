@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoenix_native/phoenix_native.dart';
 import 'package:shoppapp/shared/casheHelper/sharedPrefernce.dart';
 import 'package:shoppapp/socailapp/homescreen/cubit/cubit.dart';
 import 'package:shoppapp/socailapp/moduels/loginscreen/cubit/state.dart';
@@ -42,11 +43,10 @@ class LoginCubit extends Cubit<LoginState>{
         email: email,
         password: password).then((value) {
 
-          SocialCubit.get(context).GetUserData(uid: uid);
+          SocialCubit.get(context).GetUserData(uid: value.user!.uid);
           CasheHelper.SaveData(value: value.user!.uid, key: 'uid');
           uid=CasheHelper.GetData(key: 'uid');
           print(uid);
-
           emit(LoginSuccessState());
 
 

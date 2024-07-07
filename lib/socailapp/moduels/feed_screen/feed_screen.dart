@@ -215,7 +215,7 @@ class FeedScreen extends StatelessWidget{
               children: [
                 CircleAvatar(
                   backgroundImage: NetworkImage(
-                      'https://img.freepik.com/free-photo/man-with-santa-s-hat-hand_1194-146.jpg?t=st=1719604418~exp=1719608018~hmac=77b44c01d81320f348c313a479fe8da2a3896ed1c90f861268dc1bb884e35ad6&w=740'
+                      '${SocialCubit.get(context).socialmodel!.image}'
                   ),
                   radius: 30,
                 ),
